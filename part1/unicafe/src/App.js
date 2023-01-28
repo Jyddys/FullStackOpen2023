@@ -6,11 +6,10 @@ const Button = ({handleClick, name}) => {
   )
 }
 
-const Display = ({good, neutral, bad, number}) => {
+const Statistics = ({good, neutral, bad, reviewNumber}) => {
 
   const total = good + neutral + bad
-  const array = number
-  const avg = array.reduce((sum, value) => sum + value, 0) / array.length
+  const avg = reviewNumber.reduce((sum, value) => sum + value, 0) / reviewNumber.length
 
   const positiveReview = good / total * 100
 
@@ -56,11 +55,11 @@ const App = () => {
       <Button handleClick={handleNeutral} name="neutral" />
       <Button handleClick={handleBad} name="bad"/>
       
-      <Display 
+      <Statistics 
         good={good} 
         neutral={neutral} 
         bad={bad}
-        number={value}
+        reviewNumber={value}
       />
     </div>
   )
