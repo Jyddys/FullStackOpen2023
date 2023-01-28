@@ -6,25 +6,42 @@ const Button = ({handleClick, name}) => {
   )
 }
 
+const StatisticLine = ({text, value, positiveReview}) => {
+
+  if(positiveReview) {
+    return (
+      <div>
+      <p>{text} {value} %</p>
+    </div>
+    )
+  }
+
+  return (
+    <div>
+      <p>{text} {value}</p>
+    </div>
+  )
+}
+
 const Statistics = ({good, neutral, bad, reviewNumber}) => {
 
-  const total = good + neutral + bad
+  const all = good + neutral + bad
   const avg = reviewNumber.reduce((sum, value) => sum + value, 0) / reviewNumber.length
 
-  const positiveReview = good / total * 100
+  const positiveReview = good / all * 100
 
   return (
     <div>
       <h1>statistics</h1>
-      {total ? 
+      {all ? 
       <>
-        <p>good {good}</p>
-        <p>neutral {neutral}</p>
-        <p>bad {bad}</p>
-        <p>all {total}</p>
-        <p>average {avg}</p>
-        <p>positive {positiveReview} %</p>
-        </>
+        <StatisticLine text="good" value={good} />
+        <StatisticLine text="neutral" value={neutral} />
+        <StatisticLine text="bad" value={bad} />
+        <StatisticLine text="all" value={all}/>
+        <StatisticLine text="average" value={avg}/>
+        <StatisticLine text="positive" positiveReview={positiveReview} value={positiveReview} />
+      </>
         :
         <p>No feedback given</p>
         }
