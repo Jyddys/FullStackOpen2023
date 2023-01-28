@@ -8,17 +8,16 @@ const Button = ({handleClick, name}) => {
 
 const StatisticLine = ({text, value, positiveReview}) => {
 
-  if(positiveReview) {
-    return (
-      <div>
-      <p>{text} {value} %</p>
-    </div>
-    )
-  }
-
   return (
     <div>
-      <p>{text} {value}</p>
+    <table style={{tableLayout: "fixed",width: "150px"}}>
+      <tbody>
+      <tr>
+        <td>{text} </td>
+        <td>{value} {positiveReview ? "%" : ""}</td>
+      </tr>
+      </tbody>
+    </table>
     </div>
   )
 }
@@ -26,9 +25,9 @@ const StatisticLine = ({text, value, positiveReview}) => {
 const Statistics = ({good, neutral, bad, reviewNumber}) => {
 
   const all = good + neutral + bad
-  const avg = reviewNumber.reduce((sum, value) => sum + value, 0) / reviewNumber.length
+  const avg = (reviewNumber.reduce((sum, value) => sum + value, 0) / reviewNumber.length).toFixed(2)
 
-  const positiveReview = good / all * 100
+  const positiveReview = (good / all * 100).toFixed(2)
 
   return (
     <div>
