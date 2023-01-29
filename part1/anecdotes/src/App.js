@@ -23,20 +23,15 @@ const App = () => {
     setSelected(Math.floor(Math.random() * anecdotes.length))
   }
 
-  console.log(voteArr)
-
-
   const increase = () => {
     const copy = [...voteArr]
     copy[selected] += 1
     setVoteArr(copy)
   }
 
-  // const copy = voteArr
-  // copy[0] += 1
- 
+  // takes highest value from voteArr
+  const maxIndex = voteArr.indexOf(Math.max(...voteArr))
 
-  
   return (
     <div>
       {anecdotes[selected]}
@@ -44,6 +39,10 @@ const App = () => {
       <p>has {voteArr[selected]} votes</p>
       <button onClick={increase}>vote</button>
       <button onClick={randomValue}>next necdote</button>
+      <h2>Anecdote with the most votes:</h2>
+      <p>{anecdotes[maxIndex]}</p>
+      <p>has {voteArr[maxIndex]} votes</p>
+
     </div>
   )
 }
