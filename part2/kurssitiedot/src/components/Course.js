@@ -1,13 +1,21 @@
 import Header from "./Header"
 import Content from "./Content"
 
-const Course = ({course}) => {
+const Course = (props) => {
+
   return (
     <>
-    <Header name={course.name}/>
-    <Content course={course}/>
+    {props.courses.map(course => 
+    <>
+      <Header key={course.id} name={course.name}/>
+      <Content key={course.parts.id} course={course}/>
+    </>
+      )}
     </>
   )
 }
 
+
+
 export default Course
+
