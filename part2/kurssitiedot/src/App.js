@@ -18,10 +18,15 @@ import React from "react"
         id: 2
       },
       {
+        name: 'Redux',
+        exercises: 4,
+        id: 3
+      },
+      {
         name: 'State of a component',
         exercises: 14,
-        id: 3
-      }
+        id: 4
+      },
     ]
   }
 
