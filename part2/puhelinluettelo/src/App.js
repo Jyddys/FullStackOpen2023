@@ -3,22 +3,20 @@ import personService from './services/persons'
 import Filter from "./components/Filter"
 import PersonForm from "./components/PersonForm"
 import Persons from "./components/Persons"
-import './App.css';
+import Notification from './components/Notification'
 
 const App = () => {
   const [persons, setPersons] = useState([])
   const [newName, setNewName] = useState('')
   const [newNumber, setNewNumber] = useState('')
   const [search, setSearch] = useState('')
+  const [errorMessage, setErrorMessage] = useState(null)
 
   useEffect(() => {
     personService
       .getAll()
       .then(initialPersons => {
         setPersons(initialPersons)
-      })
-      .catch((error) => {
-        console.log(error)
       })
   }, [])
 
@@ -44,6 +42,12 @@ const App = () => {
       setPersons([...persons, initialPersons])
       setNewName('')
       setNewNumber('')
+      setErrorMessage(
+        `Added ${personObj.name}`
+      )
+      setTimeout(() => {
+        setErrorMessage(null)
+      }, 2000)
     })
     .catch((error) => {
       console.log(error)
@@ -57,6 +61,12 @@ const App = () => {
     .deleteItem(id)
     .then(() => {
       setPersons(persons.filter((person) => person.id !== id))
+      setErrorMessage(
+        `Deleted ${personToDelete.name}`
+      )
+      setTimeout(() => {
+        setErrorMessage(null)
+      }, 2000)
     })
     .catch((error) => {
       console.log(error)
@@ -83,6 +93,7 @@ const App = () => {
   return (
     <div className='container'>
       <h2>Phonebook</h2>
+      <Notification message={errorMessage}/>
       <Filter 
         search={search}
         handleSearch={handleChange}
