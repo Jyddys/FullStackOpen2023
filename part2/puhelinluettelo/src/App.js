@@ -21,7 +21,6 @@ const App = () => {
 
   const addPerson = (event) => {
     event.preventDefault()
-    
     const personObj = {
       name: newName,
       number: newNumber
@@ -32,10 +31,13 @@ const App = () => {
     return
    }
 
-    setPersons([...persons, personObj])
-    setNewName('')
-    setNewNumber('')
-
+    axios
+    .post('http://localhost:3001/persons', personObj)
+    .then(response => {
+      setPersons([...persons, response.data])
+      setNewName('')
+      setNewNumber('')
+    })  
   }
 
   const handleNameChange = (event) => {
