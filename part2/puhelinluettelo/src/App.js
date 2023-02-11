@@ -17,6 +17,9 @@ const App = () => {
       .then(initialPersons => {
         setPersons(initialPersons)
       })
+      .catch((error) => {
+        console.log(error)
+      })
   }, [])
 
   const addPerson = (event) => {
@@ -24,6 +27,10 @@ const App = () => {
     const personObj = {
       name: newName,
       number: newNumber
+    }
+    if(personObj.name.length === 0 || personObj.number.length === 0 ){
+      alert("Add name and number")
+      return
     }
 
    if(persons.find(person => person.name === newName)) {
@@ -37,7 +44,24 @@ const App = () => {
       setPersons([...persons, initialPersons])
       setNewName('')
       setNewNumber('')
+    })
+    .catch((error) => {
+      console.log(error)
     })  
+  }
+
+  const deletePerson = (id) => {
+    const personToDelete = persons.find(person => person.id === id)
+    if (window.confirm(`Delete ${personToDelete.name} ?` )) {
+    personService
+    .deleteItem(id)
+    .then(() => {
+      setPersons(persons.filter((person) => person.id !== id))
+    })
+    .catch((error) => {
+      console.log(error)
+    })  
+  }
   }
 
   const handleNameChange = (event) => {
@@ -74,6 +98,7 @@ const App = () => {
       <h2>Numbers</h2>
       <Persons
       searchResults={searchResults}
+      deletePerson={deletePerson}
       />
       
         

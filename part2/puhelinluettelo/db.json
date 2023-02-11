@@ -1,54 +1,14 @@
 {
   "persons": [
     {
-      "name": "Arto Hellas",
-      "number": "040-123456",
+      "name": "Justus sPer",
+      "number": "32131",
       "id": 1
     },
     {
-      "name": "Ada Lovelace",
-      "number": "39-44-5323523",
+      "name": "rdeafas",
+      "number": "321321321",
       "id": 2
-    },
-    {
-      "name": "Dan Abramov",
-      "number": "12-43-234345",
-      "id": 3
-    },
-    {
-      "name": "Mary Poppendieck",
-      "number": "39-23-6423122",
-      "id": 4
-    },
-    {
-      "name": "ddd",
-      "number": "321321",
-      "id": 5
-    },
-    {
-      "name": "dsadsa",
-      "number": "231321",
-      "id": 6
-    },
-    {
-      "name": "321",
-      "number": "dfsadsa",
-      "id": 7
-    },
-    {
-      "name": "testiUkko",
-      "number": "+358 404040",
-      "id": 8
-    },
-    {
-      "name": "dd",
-      "number": "321",
-      "id": 9
-    },
-    {
-      "name": "ssad",
-      "number": "3213",
-      "id": 10
     }
   ]
 }
